@@ -41,6 +41,7 @@ task('dev:deploy-lending-pool', 'Deploy lending pool for dev enviroment')
     const lendingPoolConfiguratorProxy = await getLendingPoolConfiguratorProxy(
       await addressesProvider.getLendingPoolConfigurator()
     );
+    console.log('lendingPoolConfiguratorProxy.address', lendingPoolConfiguratorProxy.address)
     await insertContractAddressInDb(
       eContractid.LendingPoolConfigurator,
       lendingPoolConfiguratorProxy.address

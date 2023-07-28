@@ -4,11 +4,12 @@ export interface SymbolMap<T> {
   [symbol: string]: T;
 }
 
-export type eNetwork = eEthereumNetwork | ePolygonNetwork | eXDaiNetwork | eAvalancheNetwork;
+export type eNetwork = eEthereumNetwork | ePolygonNetwork | eXDaiNetwork | eAvalancheNetwork | eFantomNetwork;
 
 export enum eEthereumNetwork {
   buidlerevm = 'buidlerevm',
   kovan = 'kovan',
+  sepolia = 'sepolia',
   ropsten = 'ropsten',
   main = 'main',
   coverage = 'coverage',
@@ -32,8 +33,13 @@ export enum eAvalancheNetwork {
   fuji = 'fuji',
 }
 
+export enum eFantomNetwork {
+  fantomTestnet = 'fantomTestnet'
+}
+
 export enum EthereumNetworkNames {
   kovan = 'kovan',
+  sepolia = 'sepolia',
   ropsten = 'ropsten',
   main = 'main',
   matic = 'matic',
@@ -48,6 +54,7 @@ export enum AavePools {
   matic = 'matic',
   amm = 'amm',
   avalanche = 'avalanche',
+  fantom = 'fantom'
 }
 
 export enum eContractid {
@@ -266,26 +273,26 @@ export type iAssetsWithoutUSD<T> = Omit<iAssetBase<T>, 'USD'>;
 export type iAavePoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
   | 'DAI'
-  | 'TUSD'
+  // | 'TUSD'
   | 'USDC'
   | 'USDT'
-  | 'SUSD'
-  | 'AAVE'
-  | 'BAT'
-  | 'MKR'
-  | 'LINK'
-  | 'KNC'
-  | 'WBTC'
-  | 'MANA'
-  | 'ZRX'
-  | 'SNX'
-  | 'BUSD'
-  | 'WETH'
-  | 'YFI'
-  | 'UNI'
-  | 'REN'
-  | 'ENJ'
-  | 'xSUSHI'
+  // | 'SUSD'
+  // | 'AAVE'
+  // | 'BAT'
+  // | 'MKR'
+  // | 'LINK'
+  // | 'KNC'
+  // | 'WBTC'
+  // | 'MANA'
+  // | 'ZRX'
+  // | 'SNX'
+  // | 'BUSD'
+  // | 'WETH'
+  // | 'YFI'
+  // | 'UNI'
+  // | 'REN'
+  // | 'ENJ'
+  // | 'xSUSHI'
 >;
 
 export type iLpPoolAssets<T> = Pick<
@@ -293,24 +300,24 @@ export type iLpPoolAssets<T> = Pick<
   | 'DAI'
   | 'USDC'
   | 'USDT'
-  | 'WBTC'
-  | 'WETH'
-  | 'UniDAIWETH'
-  | 'UniWBTCWETH'
-  | 'UniAAVEWETH'
-  | 'UniBATWETH'
-  | 'UniDAIUSDC'
-  | 'UniCRVWETH'
-  | 'UniLINKWETH'
-  | 'UniMKRWETH'
-  | 'UniRENWETH'
-  | 'UniSNXWETH'
-  | 'UniUNIWETH'
-  | 'UniUSDCWETH'
-  | 'UniWBTCUSDC'
-  | 'UniYFIWETH'
-  | 'BptWBTCWETH'
-  | 'BptBALWETH'
+  // | 'WBTC'
+  // | 'WETH'
+  // | 'UniDAIWETH'
+  // | 'UniWBTCWETH'
+  // | 'UniAAVEWETH'
+  // | 'UniBATWETH'
+  // | 'UniDAIUSDC'
+  // | 'UniCRVWETH'
+  // | 'UniLINKWETH'
+  // | 'UniMKRWETH'
+  // | 'UniRENWETH'
+  // | 'UniSNXWETH'
+  // | 'UniUNIWETH'
+  // | 'UniUSDCWETH'
+  // | 'UniWBTCUSDC'
+  // | 'UniYFIWETH'
+  // | 'BptWBTCWETH'
+  // | 'BptBALWETH'
 >;
 
 export type iMaticPoolAssets<T> = Pick<
@@ -419,7 +426,8 @@ export type iParamsPerNetwork<T> =
   | iEthereumParamsPerNetwork<T>
   | iPolygonParamsPerNetwork<T>
   | iXDaiParamsPerNetwork<T>
-  | iAvalancheParamsPerNetwork<T>;
+  | iAvalancheParamsPerNetwork<T>
+  | iFantomParamsPerNetwork<T>;
 
 export interface iParamsPerNetworkAll<T>
   extends iEthereumParamsPerNetwork<T>,
@@ -430,6 +438,7 @@ export interface iEthereumParamsPerNetwork<T> {
   [eEthereumNetwork.coverage]: T;
   [eEthereumNetwork.buidlerevm]: T;
   [eEthereumNetwork.kovan]: T;
+  [eEthereumNetwork.sepolia]: T;
   [eEthereumNetwork.ropsten]: T;
   [eEthereumNetwork.main]: T;
   [eEthereumNetwork.hardhat]: T;
@@ -444,6 +453,10 @@ export interface iPolygonParamsPerNetwork<T> {
 
 export interface iXDaiParamsPerNetwork<T> {
   [eXDaiNetwork.xdai]: T;
+}
+
+export interface iFantomParamsPerNetwork<T> {
+  [eFantomNetwork.fantomTestnet]: T;
 }
 
 export interface iAvalancheParamsPerNetwork<T> {

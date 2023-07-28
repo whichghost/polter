@@ -51,6 +51,10 @@ export const getLendingPoolAddressesProvider = async (address?: tEthereumAddress
   );
 };
 export const getLendingPoolConfiguratorProxy = async (address?: tEthereumAddress) => {
+  console.log('address', address)
+  console.log(
+    (await getDb().get(`${eContractid.LendingPoolConfigurator}.${DRE.network.name}`).value()).address)
+  console.log('DRE.network.name', DRE.network.name)
   return await LendingPoolConfiguratorFactory.connect(
     address ||
       (

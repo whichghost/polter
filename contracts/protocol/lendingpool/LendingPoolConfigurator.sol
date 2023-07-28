@@ -2,6 +2,8 @@
 pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
+import "hardhat/console.sol";
+
 import {SafeMath} from '../../dependencies/openzeppelin/contracts/SafeMath.sol';
 import {VersionedInitializable} from '../libraries/aave-upgradeability/VersionedInitializable.sol';
 import {
@@ -68,6 +70,7 @@ contract LendingPoolConfigurator is VersionedInitializable, ILendingPoolConfigur
   }
 
   function _initReserve(ILendingPool pool, InitReserveInput calldata input) internal {
+console.log('_initReserve');
     address aTokenProxyAddress =
       _initTokenWithProxy(
         input.aTokenImpl,
@@ -83,6 +86,7 @@ contract LendingPoolConfigurator is VersionedInitializable, ILendingPoolConfigur
           input.params
         )
       );
+console.log('_initReserve', 'aTokenProxyAddress', aTokenProxyAddress);
 
     address stableDebtTokenProxyAddress =
       _initTokenWithProxy(
@@ -98,6 +102,7 @@ contract LendingPoolConfigurator is VersionedInitializable, ILendingPoolConfigur
           input.params
         )
       );
+console.log('_initReserve', 'stableDebtTokenProxyAddress', stableDebtTokenProxyAddress);
 
     address variableDebtTokenProxyAddress =
       _initTokenWithProxy(
@@ -113,6 +118,7 @@ contract LendingPoolConfigurator is VersionedInitializable, ILendingPoolConfigur
           input.params
         )
       );
+console.log('_initReserve', 'variableDebtTokenProxyAddress', variableDebtTokenProxyAddress);
 
     pool.initReserve(
       input.underlyingAsset,

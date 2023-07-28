@@ -6,6 +6,7 @@ import {
   ePolygonNetwork,
   eXDaiNetwork,
   iParamsPerNetwork,
+  eFantomNetwork
 } from './helpers/types';
 
 require('dotenv').config();
@@ -37,6 +38,9 @@ export const NETWORKS_RPC_URL: iParamsPerNetwork<string> = {
   [eEthereumNetwork.kovan]: ALCHEMY_KEY
     ? `https://eth-kovan.alchemyapi.io/v2/${ALCHEMY_KEY}`
     : `https://kovan.infura.io/v3/${INFURA_KEY}`,
+  [eEthereumNetwork.sepolia]: ALCHEMY_KEY
+    ? `https://eth-sepolia.alchemyapi.io/v2/${ALCHEMY_KEY}`
+    : `https://sepolia.infura.io/v3/${INFURA_KEY}`,
   [eEthereumNetwork.ropsten]: ALCHEMY_KEY
     ? `https://eth-ropsten.alchemyapi.io/v2/${ALCHEMY_KEY}`
     : `https://ropsten.infura.io/v3/${INFURA_KEY}`,
@@ -56,6 +60,7 @@ export const NETWORKS_RPC_URL: iParamsPerNetwork<string> = {
   [eAvalancheNetwork.avalanche]: 'https://api.avax.network/ext/bc/C/rpc',
   [eAvalancheNetwork.fuji]: 'https://api.avax-test.network/ext/bc/C/rpc',
   [eEthereumNetwork.goerli]: `https://eth-goerli.g.alchemy.com/v2/${ALCHEMY_KEY}`,
+  [eFantomNetwork.fantomTestnet]: 'https://rpc.testnet.fantom.network'
 };
 
 export const NETWORKS_DEFAULT_GAS: iParamsPerNetwork<number> = {
